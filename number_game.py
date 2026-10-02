@@ -54,6 +54,7 @@ def player_int():
 
 def player():
     '''This function tells the user lower or higher and handles weather player guessed the target'''
+    player_int()
     player_guess = int(player_guess)
     while player_guess > max or player_guess < min: #constantly runs so when
         print("error")
