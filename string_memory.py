@@ -15,7 +15,7 @@ def get_answer():
     
 def run_game():
     '''This function prints the level and string then asks for the player's guess.'''
-    global guess, level
+    global guess, level, answer
     answer = get_answer()
     print(F"""
 Level {level}
@@ -27,6 +27,10 @@ Level {level}
     os.system("cls")
     clear_keyboard_buffer() 
     guess = input("Enter the string you just saw (case insensitive): ") 
+    
+def check_answer():
+    '''This function checks if the guess is correct.'''
+    global level
     if guess.lower() == answer.lower():
         print("Good Job!")
         time.sleep(3)
@@ -34,6 +38,7 @@ Level {level}
         clear_keyboard_buffer()    
         level +=1
         run_game()
+        check_answer()
     else:
         print(f"Answer: {answer} Guess: {guess}")
         results()
@@ -61,9 +66,11 @@ while True:
         break
     else:
         run_game()
+        check_answer()
         replay=input("Would you like to play again? y/n: ")
         if replay.lower()=="y":
                 reset()
                 run_game()
+                check_answer()
         else:
              break
