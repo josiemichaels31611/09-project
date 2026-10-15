@@ -57,20 +57,22 @@ def results():
          print("Nice job! You're a memory master!")
 
 def reset():
+    '''This function resets the level'''
     global level
-    level = 1             
+    level = 1       
 
-while True:
-    start=input("Enter Q to quit, press other to start the game: ")
-    if start.upper() == "Q":
-        break
-    else:
+    
+start=input("Enter Q to quit, press other to start the game: ")
+if start.upper() == "Q":
+    quit
+else:
         run_game()
         check_answer()
         replay=input("Would you like to play again? y/n: ")
-        if replay.lower()=="y":
+        while replay.lower()=="y":
                 reset()
                 run_game()
                 check_answer()
+                replay=input("Would you like to play again? y/n: ")
         else:
-             break
+            quit
